@@ -4,49 +4,35 @@
 		<title>
 			Чудо чудное
 		</title>
+		<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 		<link rel="stylesheet" href="css/main.css">
 	</head>
     <body>
 		<div id="window-login">
 		<div id="window">
-			<a href="#" class="close-window">Закрыть окно</a>
-			<div class="login-form">
-				<form action="" method="post">
-					<div class="form-element">
-						<label for="login">Логин: </label>
-						<input type="text" name="login" />
-					</div>
-					<div class="form-element">
-						<label for="pass">Пароль: </label>
-						<input type="password" name="pass" />
-					</div>
-					<div class="form-element">
-						<input type="submit" value="Войти" />
-					</div>
-				</form>
+			<a href="#" class="close-window"><img src="/img/close.png" alt="закрыть"></img></a>
+			<!-- Tab links -->
+			<div class="tab">
+				<button class="tablinks-login" onclick="openLogin(event, 'login-form')">Вход</button>
+				<button class="tablinks-login" onclick="openLogin(event, 'registration-form')">Регистрация</button>
 			</div>
-			<div class="registration-form">
-				<form action="" method="post">
-					<div class="form-element">
-						<label for="name">Имя: </label>
-						<input type="text" name="name" />
-					</div>
-					<div class="form-element">
-						<label for="login">Логин: </label>
-						<input type="text" name="login" />
-					</div>
-					<div class="form-element">
-						<label for="pass1">Пароль: </label>
-						<input type="password" name="pass1" />
-					</div>
-					<div class="form-element">
-						<label for="pass2">Пароль еще раз: </label>
-						<input type="password" name="pass2" />
-					</div>
-					<div class="form-element">
-						<input type="submit" value="Зарегистрировать" />
-					</div>
-				</form>
+			<div>
+				<div id="login-form" class="tabcontent-login">
+					<form action="" method="post" style="margin-top:40px;">
+						<div class="form-element"><input type="text" name="login" placeholder="Логин" /></div>
+						<div class="form-element"><input type="password" name="pass" placeholder="Пароль" /></div>
+						<div class="form-element"><input class="button" type="submit" value="Войти" /></div>
+					</form>
+				</div>
+				<div id="registration-form" class="tabcontent-login">
+					<form action="" method="post" style="margin-top:10px;">
+						<div class="form-element"><input type="text" name="name" placeholder="Имя" /></div>
+						<div class="form-element"><input type="text" name="login" placeholder="Логин" /></div>
+						<div class="form-element"><input type="password" name="pass1" placeholder="Пароль" /></div>
+						<div class="form-element"><input type="password" name="pass2" placeholder="Повторить пароль" /></div>
+						<div class="form-element"><input class="button" type="submit" value="Зарегистрировать" /></div>
+					</form>
+				</div>
 			</div>
 		</div>
 		</div>
