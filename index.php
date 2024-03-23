@@ -38,7 +38,22 @@
 		</div>
 		
 		<div class="main-content">
-			<a href="#window-login">Вход/Регистрация</a>
+			<div class="left-area">
+				<div class="user-area">
+					<a href="#window-login">Вход/Регистрация</a>
+				</div>
+				<div class="main-list-menu">
+					<?php 
+						$mainList = array('яблоко','апельсин','виноград','дыня','помидор');
+						for ($i = 0; $i < count($mainList); $i++){
+							echo '<div class="main-list-item" style="border-color: blue;" onclick="clickMainListItem(event, ',$i,')">', $mainList[$i], '</div>';
+						}
+					?>
+				</div>
+			</div>
+			<div class="right-area">
+
+			</div>
 		</div>
 		
 		<script src="js/main.js"></script>

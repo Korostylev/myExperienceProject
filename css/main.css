@@ -1,3 +1,26 @@
+.main-content {
+    display: flex;
+    height: 100%;
+}
+.left-area {
+    height: 100%;
+    width: 400px;
+    background-color: #ddd;
+}
+.main-list-item {
+    padding: 6px 10px;
+    font-size: 18px;
+    border:1px solid;
+    cursor: pointer;
+}
+.main-list-item.active {
+    border:3px solid;
+    font-weight: 700;
+}
+.main-list-item:hover {
+    border:3px solid;
+}
+
 /* Всплывающие окна */
 #window-login {
     background: rgba(102, 102, 102, 0.5);
