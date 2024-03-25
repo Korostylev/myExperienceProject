@@ -1,5 +1,6 @@
 <?php 
 	require_once('db_authorization.php'); 
+	require_once('registration.php'); 
 	require_once('authentication.php'); 
 ?>
 <html>
@@ -24,7 +25,7 @@
 					<form action="/index.php" method="post" style="margin-top:40px;">
 						<div class="form-element"><input type="text" name="login" placeholder="Логин" /></div>
 						<div class="form-element"><input type="password" name="pass" placeholder="Пароль" /></div>
-						<div class="form-element"><input class="button" type="submit" value="Войти" /></div>
+						<div class="form-element"><input class="button" type="submit" value="Войти" /><input type="hidden" name="typeOperation" value="enter" /></div>
 					</form>
 				</div>
 				<div id="registration-form" class="tabcontent-login">
@@ -33,7 +34,7 @@
 						<div class="form-element"><input type="text" name="login" placeholder="Логин" /></div>
 						<div class="form-element"><input type="password" name="pass1" placeholder="Пароль" /></div>
 						<div class="form-element"><input type="password" name="pass2" placeholder="Повторить пароль" /></div>
-						<div class="form-element"><input class="button" type="submit" value="Зарегистрировать" /></div>
+						<div class="form-element"><input class="button" type="submit" value="Зарегистрировать" /><input type="hidden" name="typeOperation" value="reg" /></div>
 					</form>
 				</div>
 			</div>
