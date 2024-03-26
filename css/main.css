@@ -20,18 +20,13 @@
 .main-list-item:hover {
     border:3px solid;
 }
+.right-area{
+    height: 100%;
+    width: 100%;
+}
 
 /* Всплывающие окна */
-#window-login {
-    background: rgba(102, 102, 102, 0.5);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-}
-#window {
+.window {
     width: 300px;
     height: 300px;
     padding: 15px;
@@ -45,7 +40,16 @@
     margin: auto;
     background: #fff;
 }
-#window-login:target {display: block;}
+#window-login, #window-addchapter {
+    background: rgba(102, 102, 102, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+#window-login:target, #window-addchapter:target{display: block;}
 a.close-window{
     position: absolute;
     right: -4px;
@@ -74,7 +78,6 @@ a.close-window{
     height: 100%;
 }
 
-
 /* Элементы формы */
 .form-element {
     margin-bottom: 6px;
@@ -83,4 +86,31 @@ a.close-window{
     /*height: 40px;*/
     font-size: 20px;
     padding: 6px 10px;
+}
+.form-element textarea {
+    height: 140px;
+    width: 266px;
+    resize: none;
+    font-size: 20px;
+    padding: 6px 10px;
+}
+.title-window {
+    font-size: 26px;
+    margin-bottom: 12px;
+}
+
+/*  Перетаскивание  */
+.elements-area{
+    background-color: #ccc;
+    height: 100%;
+    width: 100%;
+    padding: 4px;
+    position: relative;
+}
+.moved-element {
+    width: 120px;
+    height: 80px;
+    background-color: red;
+    position: absolute;
+    cursor: pointer;
 }
