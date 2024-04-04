@@ -86,19 +86,61 @@ function setCoordsMovedElementAjax(id, top, left) {
 	req.send(null);  // отослать запрос
 	statusElem.innerHTML = 'Ожидаю ответа сервера...' 
 }
-function editSubchapter(id, title, description, color, chapterId) {
+function editSubchapterAjax(id, title, description, color, chapterId) {
 	var req = getXmlHttp();
-    /*console.log(id, top, left);
 	var statusElem = document.getElementById('info_div'); 
 	req.onreadystatechange = function() {
 		if (req.readyState == 4) { 
             if(req.status == 200) { 
 			    statusElem.innerHTML = req.responseText;
-                startMovedElements(); // для перемещения элементов
+				document.getElementsByClassName("close-window")[0].click();
+				getMovedElementsAjax(chapterId);
             }
 		}
 	}
-	req.open('GET', '/ajax_request/setCoordsMovedElement.php?id='+id+'&top='+top+'&left='+left, true);  
+	let getStr = '/ajax_request/editSubchapterElement.php?id='+id+'&title='+title+'&description='+description+'&color='+color.replace(/[^\w\s]/gi, '')+'&chapterid='+chapterId;
+	req.open('GET', getStr, true);  
 	req.send(null);  // отослать запрос
-	statusElem.innerHTML = 'Ожидаю ответа сервера...' */
+	statusElem.innerHTML = 'Ожидаю ответа сервера...';
+}
+function editChapterAjax(id, title, description, color) {
+	var req = getXmlHttp();
+	var statusElem = document.getElementById('info_div'); 
+	req.onreadystatechange = function() {
+		if (req.readyState == 4) { 
+            if(req.status == 200) { 
+			    statusElem.innerHTML = req.responseText;
+				closeAll();
+				getMainChaptersAjax();
+            }
+		}
+	}
+	let getStr = '/ajax_request/editChapter.php?id='+id+'&title='+title+'&description='+description+'&color='+color.replace(/[^\w\s]/gi, '');
+	req.open('GET', getStr, true);  
+	req.send(null);  // отослать запрос
+	statusElem.innerHTML = 'Ожидаю ответа сервера...';
+}
+function getMainChaptersAjax() {
+	var req = getXmlHttp();
+	var statusElem = document.getElementById('main-list-menu'); 
+	req.onreadystatechange = function() {
+		if (req.readyState == 4) { 
+            statusElem.innerHTML = req.statusText
+            if(req.status == 200) { 
+			    statusElem.innerHTML = req.responseText;
+				document.getElementById('elements-area').innerHTML = "";
+            }
+		}
+	}
+	req.open('GET', '/ajax_request/getMainChapters.php', true);  
+	req.send(null);  // отослать запрос
+	statusElem.innerHTML = 'Ожидаю ответа сервера...' 
+}
+
+function loaderOn(message) {
+	document.getElementById('loading-message').innerText = message;
+	document.getElementById('open-loading').click();
+}
+function closeAll() {
+	document.getElementsByClassName("close-window")[0].click();
 }

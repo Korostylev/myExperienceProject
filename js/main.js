@@ -6,6 +6,12 @@ var subchapterWindow = {
     chapterId: document.getElementById('subchapter_chapter_id'),
     id: document.getElementById('subchapter_id'),
 };
+var chapterWindow = {
+    title: document.getElementById('chapter_title'),
+    description: document.getElementById('chapter_description'),
+    color: document.getElementById('chapter_color'),
+    id: document.getElementById('chapter_id'),
+};
 
 function openLogin(evt, tabName) {
     var i, tabcontent, tablinks;
@@ -101,13 +107,17 @@ function startMovedElements(){
 function addSubchapter(){
     editSubchapterAjax(subchapterWindow.id.getAttribute('value'), subchapterWindow.title.value, subchapterWindow.description.value, subchapterWindow.color.value, subchapterWindow.chapterId.getAttribute('value'));
 }
+function addChapter(){
+    editChapterAjax(chapterWindow.id.getAttribute('value'), chapterWindow.title.value, chapterWindow.description.value, chapterWindow.color.value);
+}
 
 // Выполнить сразу
 document.getElementsByClassName("tablinks-login")[0].click();
+getMainChaptersAjax();
 //dragElement(document.getElementById("mydiv"));
 
-var mainListItems = document.getElementsByClassName("main-list-item");
+/*var mainListItems = document.getElementsByClassName("main-list-item");
 if (mainListItems.length > 0) {
     mainListItems[0].click();
-}
+}*/
 //startMovedElements()
