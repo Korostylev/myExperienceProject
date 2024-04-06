@@ -110,7 +110,7 @@ function editChapterAjax(id, title, description, color) {
 		if (req.readyState == 4) { 
             if(req.status == 200) { 
 			    statusElem.innerHTML = req.responseText;
-				closeAll();
+				document.getElementsByClassName("close-window")[0].click();
 				getMainChaptersAjax();
             }
 		}
@@ -136,11 +136,19 @@ function getMainChaptersAjax() {
 	req.send(null);  // отослать запрос
 	statusElem.innerHTML = 'Ожидаю ответа сервера...' 
 }
-
-function loaderOn(message) {
-	document.getElementById('loading-message').innerText = message;
-	document.getElementById('open-loading').click();
-}
-function closeAll() {
-	document.getElementsByClassName("close-window")[0].click();
+function getSubchapterElementAjax(subchapterId) {
+	var req = getXmlHttp();
+	var statusElem = document.getElementById('content-view-subchapter'); 
+	req.onreadystatechange = function() {
+		if (req.readyState == 4) { 
+            statusElem.innerHTML = req.statusText
+            if(req.status == 200) { 
+			    statusElem.innerHTML = req.responseText;
+                document.getElementById('open-view-subchapter').click();
+            }
+		}
+	}
+	req.open('GET', '/ajax_request/getSubchapterElement.php?subchapterid='+subchapterId, true);  
+	req.send(null);  // отослать запрос
+	statusElem.innerHTML = 'Ожидаю ответа сервера...' 
 }

@@ -95,7 +95,8 @@ function dragElement(elmnt) {
         return false;
     }
     function click(){
-        console.log('-',elmnt);
+        //console.log('-',elmnt);
+        getSubchapterElementAjax(elmnt.getAttribute('idMovedElement'));  
     }
 }
 function startMovedElements(){
