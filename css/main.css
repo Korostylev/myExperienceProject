@@ -12,6 +12,7 @@
     font-size: 18px;
     border:1px solid;
     cursor: pointer;
+    position: relative;
 }
 .main-list-item.active {
     border:3px solid;
@@ -19,6 +20,21 @@
 }
 .main-list-item:hover {
     border:3px solid;
+}
+.edit-icon{
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    border-radius: 4px;
+    padding: 2px;
+}
+.edit-icon:hover{
+    border: 1px solid;
+    border-color: black;
+}
+.edit-icon img{
+    width: 20px;
+    height: 20px;
 }
 .right-area{
     height: 100%;
