@@ -111,6 +111,9 @@ function addSubchapter(){
 function addChapter(){
     editChapterAjax(chapterWindow.id.getAttribute('value'), chapterWindow.title.value, chapterWindow.description.value, chapterWindow.color.value);
 }
+function editChapter(e, itemId){
+    console.log(e, itemId);
+}
 
 // Выполнить сразу
 document.getElementsByClassName("tablinks-login")[0].click();

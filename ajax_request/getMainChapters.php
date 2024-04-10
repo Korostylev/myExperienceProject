@@ -9,7 +9,8 @@
         $title = $row['title'];
         $id = $row['id'];
         $color = $row['color'];
-        echo '<div class="main-list-item" style="border-color: blue; background-color:',$color,';" onclick="clickMainListItem(event, ',$id,')">', $title, '</div>';
+        echo '<div class="main-list-item" style="border-color: blue; background-color:',$color,';" onclick="clickMainListItem(event, ',$id,')">', $title, '
+        <div class="edit-icon chapter-edit-btn"  onclick="editChapter(event, ',$id,')"><img src="../img/edit.png" alt="редактировать"></div></div>';
       }
     }
   }
