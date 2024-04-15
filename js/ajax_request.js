@@ -125,7 +125,7 @@ function getMainChaptersAjax() {
 	var statusElem = document.getElementById('main-list-menu'); 
 	req.onreadystatechange = function() {
 		if (req.readyState == 4) { 
-            statusElem.innerHTML = req.statusText
+            statusElem.innerHTML = req.statusText;
             if(req.status == 200) { 
 			    statusElem.innerHTML = req.responseText;
 				document.getElementById('elements-area').innerHTML = "";
@@ -144,11 +144,44 @@ function getSubchapterElementAjax(subchapterId) {
             statusElem.innerHTML = req.statusText
             if(req.status == 200) { 
 			    statusElem.innerHTML = req.responseText;
-                document.getElementById('open-view-subchapter').click();
+                //document.getElementById('open-view-subchapter').click();
+				document.getElementById('window-view-subchapter').style.display = 'block';
             }
 		}
 	}
 	req.open('GET', '/ajax_request/getSubchapterElement.php?subchapterid='+subchapterId, true);  
+	req.send(null);  // отослать запрос
+	statusElem.innerHTML = 'Ожидаю ответа сервера...' 
+}
+function getEditingChapterAjax(id) {
+	var req = getXmlHttp();
+	var statusElem = document.getElementById('chapter-editing-window-area'); 
+	req.onreadystatechange = function() {
+		if (req.readyState == 4) { 
+            statusElem.innerHTML = req.statusText;
+            if(req.status == 200) { 
+			    statusElem.innerHTML = req.responseText;
+				//document.getElementById('elements-area').innerHTML = "";
+            }
+		}
+	}
+	req.open('GET', '/ajax_request/getEditingChapter.php?id='+id, true);  
+	req.send(null);  // отослать запрос
+	statusElem.innerHTML = 'Ожидаю ответа сервера...' 
+}
+function getEditingSubchapterAjax(id) {
+	var req = getXmlHttp();
+	var statusElem = document.getElementById('subchapter-editing-window-area'); 
+	req.onreadystatechange = function() {
+		if (req.readyState == 4) { 
+            statusElem.innerHTML = req.statusText;
+            if(req.status == 200) { 
+			    statusElem.innerHTML = req.responseText;
+				//document.getElementById('elements-area').innerHTML = "";
+            }
+		}
+	}
+	req.open('GET', '/ajax_request/getEditingSubchapter.php?id='+id, true);  
 	req.send(null);  // отослать запрос
 	statusElem.innerHTML = 'Ожидаю ответа сервера...' 
 }

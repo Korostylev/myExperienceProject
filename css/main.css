@@ -22,11 +22,13 @@
     border:3px solid;
 }
 .edit-icon{
+    border-radius: 4px;
+    padding: 2px;
+}
+.chapter-edit-btn{
     position: absolute;
     top: 4px;
     right: 4px;
-    border-radius: 4px;
-    padding: 2px;
 }
 .edit-icon:hover{
     border: 1px solid;
@@ -55,6 +57,17 @@
     left: 0;
     margin: auto;
     background: #fff;
+}
+#window-view-subchapter .window{
+    padding: 0px;
+    background: none;
+    width: 400px;
+    height: 500px;
+    text-align: left;
+}
+#content-view-subchapter-div{
+    border-radius: 20px;
+    padding: 15px;
 }
 #window-login, #window-addchapter, #window-addsubchapter, #window-loading, #window-view-subchapter {
     background: rgba(102, 102, 102, 0.5);
