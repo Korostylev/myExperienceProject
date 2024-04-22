@@ -1,6 +1,6 @@
 <?php
   require_once('../db_authorization.php'); // $connected
-  require_once('../authentication.php'); // $userinfo $state
+  require_once('authentication.php'); // $userinfo $state
   if ($state == 1 & isset($_GET['id'])){
     $id = $_GET['id'];
     if ($id > 0){

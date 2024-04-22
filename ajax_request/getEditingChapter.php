@@ -1,6 +1,6 @@
 <?php
   require_once('../db_authorization.php'); // $connected
-  require_once('../authentication.php'); // $userinfo $state
+  require_once('authentication.php'); // $userinfo $state
   if ($state == 1 & isset($_GET['id'])){
     
     $id = $_GET['id'];
@@ -37,7 +37,7 @@
 						<textarea id="chapter_description" name="description" placeholder="Описание" maxlength="254" ></textarea>
 					</div>
 					<div class="form-element">
-						<input id="chapter_color" type="color" name="color" placeholder="Цвет" style="margin-right: 40px; height: 32px; padding: 0px;" />
+						<input id="chapter_color" type="color" name="color" placeholder="Цвет" style="margin-right: 40px; height: 32px; padding: 0px;" value="#bbbbbb"/>
 						<input class="button" type="button" value="Добавить"  onclick="addChapter()"/>
 						<input id="chapter_id" type="hidden" name="id" value="0" />
 					</div>
