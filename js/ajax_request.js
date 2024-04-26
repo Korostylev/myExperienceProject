@@ -169,7 +169,7 @@ function getEditingChapterAjax(id) {
 	req.send(null);  // отослать запрос
 	statusElem.innerHTML = 'Ожидаю ответа сервера...' 
 }
-function getEditingSubchapterAjax(id) {
+function getEditingSubchapterAjax(id, chapterId) {
 	var req = getXmlHttp();
 	var statusElem = document.getElementById('subchapter-editing-window-area'); 
 	req.onreadystatechange = function() {
@@ -181,7 +181,39 @@ function getEditingSubchapterAjax(id) {
             }
 		}
 	}
-	req.open('GET', '/ajax_request/getEditingSubchapter.php?id='+id, true);  
+	req.open('GET', '/ajax_request/getEditingSubchapter.php?id='+id+'&chapterid='+chapterId, true);  
+	req.send(null);  // отослать запрос
+	statusElem.innerHTML = 'Ожидаю ответа сервера...' 
+}
+function deleteElementAjax(type, id) {
+	var req = getXmlHttp();
+	var statusElem = document.getElementById('info_div'); 
+	req.onreadystatechange = function() {
+		if (req.readyState == 4) { 
+            statusElem.innerHTML = req.statusText;
+            if(req.status == 200) { 
+			    statusElem.innerHTML = req.responseText;
+				getMainChaptersAjax();
+            }
+		}
+	}
+	req.open('GET', '/ajax_request/deleteElement.php?type=' + type + '&id='+id, true);  
+	req.send(null);  // отослать запрос
+	statusElem.innerHTML = 'Ожидаю ответа сервера...' 
+}
+function getCalendarElementsAjax() {
+	var req = getXmlHttp();
+	var statusElem = document.getElementById('elements-area'); 
+	req.onreadystatechange = function() {
+		if (req.readyState == 4) { 
+            statusElem.innerHTML = req.statusText
+            if(req.status == 200) { 
+			    statusElem.innerHTML = req.responseText;
+                startMovedElements(); // для перемещения элементов
+            }
+		}
+	}
+	req.open('GET', '/ajax_request/getCalendarElements.php', true);  
 	req.send(null);  // отослать запрос
 	statusElem.innerHTML = 'Ожидаю ответа сервера...' 
 }
