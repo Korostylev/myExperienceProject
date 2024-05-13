@@ -185,6 +185,38 @@ function getEditingSubchapterAjax(id, chapterId) {
 	req.send(null);  // отослать запрос
 	statusElem.innerHTML = 'Ожидаю ответа сервера...' 
 }
+function getEditingDailyTaskAjax(id) {
+	var req = getXmlHttp();
+	var statusElem = document.getElementById('dailytask-editing-window-area'); 
+	req.onreadystatechange = function() {
+		if (req.readyState == 4) { 
+            statusElem.innerHTML = req.statusText;
+            if(req.status == 200) { 
+			    statusElem.innerHTML = req.responseText;
+				//document.getElementById('elements-area').innerHTML = "";
+            }
+		}
+	}
+	req.open('GET', '/ajax_request/getEditingDailyTask.php?id='+id, true);  
+	req.send(null);  // отослать запрос
+	statusElem.innerHTML = 'Ожидаю ответа сервера...' 
+}
+function editDailyTaskAjax(id, title, description) {
+	var req = getXmlHttp();
+	var statusElem = document.getElementById('info_div'); 
+	req.onreadystatechange = function() {
+		if (req.readyState == 4) { 
+            if(req.status == 200) { 
+			    statusElem.innerHTML = req.responseText;
+				getMainChaptersAjax();
+            }
+		}
+	}
+	let getStr = '/ajax_request/editDailyTask.php?id='+id+'&title='+title+'&description='+description;
+	req.open('GET', getStr, true);  
+	req.send(null);  // отослать запрос
+	statusElem.innerHTML = 'Ожидаю ответа сервера...';
+}
 function deleteElementAjax(type, id) {
 	var req = getXmlHttp();
 	var statusElem = document.getElementById('info_div'); 

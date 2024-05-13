@@ -1,17 +1,3 @@
-// ссылки на элементы
-var subchapterWindow = {
-    title: document.getElementById('subchapter_title'),
-    description: document.getElementById('subchapter_description'),
-    color: document.getElementById('subchapter_color'),
-    chapterId: document.getElementById('subchapter_chapter_id'),
-    id: document.getElementById('subchapter_id'),
-};
-var chapterWindow = {
-    title: document.getElementById('chapter_title'),
-    description: document.getElementById('chapter_description'),
-    color: document.getElementById('chapter_color'),
-    id: document.getElementById('chapter_id'),
-};
 
 function openLogin(evt, tabName) {
     var i, tabcontent, tablinks;
@@ -39,8 +25,9 @@ function clickMainListItem(evt, itemId) {
 
     evt.currentTarget.className += " active";
     //document.getElementById('subchapter_chapter_id').setAttribute('value', itemId);
-    subchapterWindow.chapterId.setAttribute('value', itemId);
-    getMovedElementsAjax(itemId); // аякс запрос
+    //subchapterWindow.chapterId.setAttribute('value', itemId);
+    if (itemId == -1) getCalendarElementsAjax(); // если выбран календарь
+    else getMovedElementsAjax(itemId); // аякс запрос
 }
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -106,13 +93,54 @@ function startMovedElements(){
     }
 }
 function addSubchapter(){
-    editSubchapterAjax(subchapterWindow.id.getAttribute('value'), subchapterWindow.title.value, subchapterWindow.description.value, subchapterWindow.color.value, subchapterWindow.chapterId.getAttribute('value'));
+    closeWindows();
+    editSubchapterAjax(document.getElementById('subchapter_id').getAttribute('value'), document.getElementById('subchapter_title').value, 
+        document.getElementById('subchapter_description').value, document.getElementById('subchapter_color').value, 
+        document.getElementById('subchapter_chapter_id').getAttribute('value'));
 }
 function addChapter(){
-    editChapterAjax(chapterWindow.id.getAttribute('value'), chapterWindow.title.value, chapterWindow.description.value, chapterWindow.color.value);
+    closeWindows();
+    editChapterAjax(document.getElementById('chapter_id').getAttribute('value'), document.getElementById('chapter_title').value, 
+        document.getElementById('chapter_description').value, document.getElementById('chapter_color').value);
 }
-function editChapter(e, itemId){
-    console.log(e, itemId);
+function editChapter(itemId){
+    document.getElementById('window-addchapter').style.display = 'block';
+    getEditingChapterAjax(itemId);
+}
+function editSubchapter(itemId, chapterId){
+    document.getElementById('window-view-subchapter').style.display = 'none';
+    document.getElementById('window-addsubchapter').style.display = 'block';
+    getEditingSubchapterAjax(itemId, chapterId);
+}
+function editDailyTask(itemId){
+    document.getElementById('window-adddailytask').style.display = 'block';
+    getEditingDailyTaskAjax(itemId);
+}
+function addDailyTask(){
+    closeWindows();
+    editDailyTaskAjax(document.getElementById('task_id').getAttribute('value'), document.getElementById('task_title').value, 
+        document.getElementById('task_description').value);
+}
+function closeWindows(){
+    document.getElementById('window-addchapter').style.display = 'none';
+    document.getElementById('window-addsubchapter').style.display = 'none';
+    document.getElementById('window-view-subchapter').style.display = 'none';
+    document.getElementById('window-delete').style.display = 'none';
+    document.getElementById('window-adddailytask').style.display = 'none';
+}
+function deleteWindow(chapterId, subchapterId){
+    if (chapterId > 0) document.getElementById('window-delete-title').innerText = 'Удалить группу?';
+    else if (subchapterId > 0) document.getElementById('window-delete-title').innerText = 'Удалить элемент?';
+    document.getElementById('window-delete-chapter').setAttribute('value', chapterId);
+    document.getElementById('window-delete-subchapter').setAttribute('value', subchapterId);
+    document.getElementById('window-delete').style.display = 'block';
+}
+function deleteElement(){
+    closeWindows();
+    let chapterId = document.getElementById('window-delete-chapter').getAttribute('value');
+    let subchapterId = document.getElementById('window-delete-subchapter').getAttribute('value');
+    if (chapterId > 0) deleteElementAjax('chapter', chapterId);
+    else if (subchapterId > 0) deleteElementAjax('subchapter', subchapterId);
 }
 
 // Выполнить сразу

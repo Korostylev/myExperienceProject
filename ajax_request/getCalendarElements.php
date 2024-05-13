@@ -5,7 +5,7 @@
   if ($state == 1) {
     echo '<div class="right-area-menu">
         <div class="daily-tasks">
-      <div><button class="simple-button">Добавить ежедневку</button></div>';
+      <div><button class="simple-button" onclick="editDailyTask(0)">Добавить ежедневку</button></div>';
     
     echo '</div>
       </div>';

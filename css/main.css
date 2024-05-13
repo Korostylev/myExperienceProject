@@ -74,7 +74,7 @@
     border-radius: 20px;
     padding: 15px;
 }
-#window-login, #window-addchapter, #window-addsubchapter, #window-loading, #window-view-subchapter, #window-delete {
+#window-login, #window-addchapter, #window-addsubchapter, #window-loading, #window-view-subchapter, #window-delete, #window-adddailytask {
     background: rgba(102, 102, 102, 0.5);
     width: 100%;
     height: 100%;
@@ -83,7 +83,8 @@
     left: 0;
     display: none;
 }
-#window-login:target, #window-addchapter:target, #window-addsubchapter:target, #window-loading:target, #window-view-subchapter:target, #window-delete:target {display: block;}
+#window-login:target, #window-addchapter:target, #window-addsubchapter:target, #window-loading:target, #window-view-subchapter:target, #window-delete:target,
+#window-adddailytask:target {display: block;}
 a.close-window{
     position: absolute;
     right: -4px;
